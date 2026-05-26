@@ -9,6 +9,8 @@ import AgentDashboard from "./pages/agent/AgentDashboard";
 import CustomerDashboard from "./pages/customer/CustomerDashboard";
 
 
+import CustomerOnboarding from "./pages/customer/CustomerOnboarding";
+
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -60,6 +62,11 @@ function App() {
 <Route
   path="/policies"
   element={<PolicyManagement />}
+/>
+
+<Route
+  path="/customers"
+  element={<CustomerOnboarding />}
 />
 
       </Routes>
