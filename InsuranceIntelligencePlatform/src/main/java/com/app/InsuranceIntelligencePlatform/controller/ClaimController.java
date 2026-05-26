@@ -2,6 +2,7 @@ package com.app.InsuranceIntelligencePlatform.controller;
 
 import com.app.InsuranceIntelligencePlatform.dto.ClaimRequestDTO;
 import com.app.InsuranceIntelligencePlatform.dto.ClaimResponseDTO;
+import com.app.InsuranceIntelligencePlatform.enums.ClaimStatus;
 import com.app.InsuranceIntelligencePlatform.service.ClaimService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,5 +40,15 @@ public class ClaimController {
     public ResponseEntity<String> deleteClaim(@PathVariable Long id) {
         claimService.deleteClaim(id);
         return ResponseEntity.ok("Claim deleted successfully");
+    }
+    
+    @PutMapping("/{id}/status")
+    public ResponseEntity<ClaimResponseDTO> updateClaimStatus(
+            @PathVariable Long id,
+            @RequestParam ClaimStatus status) {
+
+        return ResponseEntity.ok(
+                claimService.updateClaimStatus(id, status)
+        );
     }
 }

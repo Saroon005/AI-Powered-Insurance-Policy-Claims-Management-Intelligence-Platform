@@ -92,4 +92,16 @@ public class ClaimService {
 
         return responseDTO;
     }
+    
+    public ClaimResponseDTO updateClaimStatus(Long id, ClaimStatus status) {
+
+        Claim claim = claimRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Claim not found"));
+
+        claim.setStatus(status);
+
+        Claim updatedClaim = claimRepository.save(claim);
+
+        return mapToResponseDTO(updatedClaim);
+    }
 }
