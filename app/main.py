@@ -1,37 +1,30 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 
-from app.config import settings
+from app.routes import fraud_routes
+from app.routes import analytics_routes
+from app.routes import etl_routes
 
 app = FastAPI(
-    title=settings.APP_NAME,
-    version=settings.APP_VERSION,
-    description="AI Powered Insurance Analytics & Fraud Detection Service"
+    title="Insurance AI Analytics Engine",
+    version="1.0.0"
 )
 
-# CORS Configuration
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Include Routers
+app.include_router(fraud_routes.router)
+app.include_router(analytics_routes.router)
+app.include_router(etl_routes.router)
 
 
-# Root API
 @app.get("/")
-def root():
+def home():
     return {
-        "message": "Insurance AI Service Running Successfully"
+        "message": "Insurance AI Engine Running Successfully"
     }
 
 
-# Health Check API
 @app.get("/health")
 def health_check():
     return {
         "status": "UP",
-        "service": settings.APP_NAME,
-        "version": settings.APP_VERSION
+        "service": "Insurance AI Engine"
     }
