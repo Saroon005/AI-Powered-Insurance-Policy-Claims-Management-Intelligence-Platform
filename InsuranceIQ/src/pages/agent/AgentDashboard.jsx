@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./AgentDashboard.css";
 
+import { useNavigate } from "react-router-dom";
+
 const API_URL = "http://localhost:8080/api";
 
 const dummyAgent = {
@@ -54,7 +56,7 @@ function AgentDashboard() {
   const [agent, setAgent] = useState(dummyAgent);
   const [policies, setPolicies] = useState(dummyPolicies);
   const [claims, setClaims] = useState(dummyClaims);
-
+const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -151,6 +153,12 @@ function AgentDashboard() {
         <div className="card">
           <h2>My Customers</h2>
 
+<button
+  className="onboard-btn"
+  onClick={() => navigate("/customers")}
+>
+  + Onboard New
+</button>
           <table className="customer-table">
             <thead>
               <tr>

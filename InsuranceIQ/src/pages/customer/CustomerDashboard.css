@@ -1,0 +1,100 @@
+.customer-dashboard {
+  padding: 30px;
+  color: white;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 25px;
+}
+
+.profile-card,
+.policy-card,
+.claims-card {
+  background: #171c35;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  margin: auto;
+  border-radius: 50%;
+  background: #8f7b2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.profile-card h2 {
+  text-align: center;
+}
+
+.verified {
+  display: block;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 6px 14px;
+  background: #0e5b45;
+  border-radius: 20px;
+}
+
+.customer-info {
+  margin-top: 20px;
+}
+
+.claim-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #cdb22f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+}
+
+.policy-card {
+  position: relative;
+}
+
+.status {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.active {
+  background: #0e5b45;
+}
+
+.claims-card {
+  margin-top: 25px;
+}
+
+.claims-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.claims-card th,
+.claims-card td {
+  padding: 12px;
+  text-align: left;
+}
+
+.claims-card tr {
+  border-bottom: 1px solid #303858;
+}
