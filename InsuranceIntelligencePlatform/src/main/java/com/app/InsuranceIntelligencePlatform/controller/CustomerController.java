@@ -1,6 +1,7 @@
 package com.app.InsuranceIntelligencePlatform.controller;
 
-import com.app.InsuranceIntelligencePlatform.entity.Customer;
+import com.app.InsuranceIntelligencePlatform.dto.CustomerRequestDTO;
+import com.app.InsuranceIntelligencePlatform.dto.CustomerResponseDTO;
 import com.app.InsuranceIntelligencePlatform.service.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,16 +19,16 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(
-            @RequestBody Customer customer) {
+    public ResponseEntity<CustomerResponseDTO> createCustomer(
+            @RequestBody CustomerRequestDTO requestDTO) {
 
         return ResponseEntity.ok(
-                customerService.createCustomer(customer)
+                customerService.createCustomer(requestDTO)
         );
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers() {
+    public ResponseEntity<List<CustomerResponseDTO>> getAllCustomers() {
 
         return ResponseEntity.ok(
                 customerService.getAllCustomers()
@@ -35,7 +36,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(
+    public ResponseEntity<CustomerResponseDTO> getCustomerById(
             @PathVariable Long id) {
 
         return ResponseEntity.ok(
@@ -44,12 +45,12 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(
+    public ResponseEntity<CustomerResponseDTO> updateCustomer(
             @PathVariable Long id,
-            @RequestBody Customer customer) {
+            @RequestBody CustomerRequestDTO requestDTO) {
 
         return ResponseEntity.ok(
-                customerService.updateCustomer(id, customer)
+                customerService.updateCustomer(id, requestDTO)
         );
     }
 

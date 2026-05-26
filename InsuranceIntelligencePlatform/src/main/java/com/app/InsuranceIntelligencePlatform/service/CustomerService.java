@@ -1,10 +1,13 @@
 package com.app.InsuranceIntelligencePlatform.service;
 
+import com.app.InsuranceIntelligencePlatform.dto.CustomerRequestDTO;
+import com.app.InsuranceIntelligencePlatform.dto.CustomerResponseDTO;
 import com.app.InsuranceIntelligencePlatform.entity.Customer;
 import com.app.InsuranceIntelligencePlatform.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -15,41 +18,82 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public Customer createCustomer(Customer customer) {
-        return customerRepository.save(customer);
+    public CustomerResponseDTO createCustomer(CustomerRequestDTO requestDTO) {
+
+        Customer customer = new Customer();
+
+        customer.setFirstName(requestDTO.getFirstName());
+        customer.setLastName(requestDTO.getLastName());
+        customer.setEmail(requestDTO.getEmail());
+        customer.setPhoneNumber(requestDTO.getPhoneNumber());
+        customer.setAddress(requestDTO.getAddress());
+        customer.setCity(requestDTO.getCity());
+        customer.setState(requestDTO.getState());
+        customer.setCountry(requestDTO.getCountry());
+        customer.setZipCode(requestDTO.getZipCode());
+
+        Customer savedCustomer = customerRepository.save(customer);
+
+        return mapToResponseDTO(savedCustomer);
     }
 
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+    public List<CustomerResponseDTO> getAllCustomers() {
+
+        return customerRepository.findAll()
+                .stream()
+                .map(this::mapToResponseDTO)
+                .collect(Collectors.toList());
     }
 
-    public Customer getCustomerById(Long id) {
+    public CustomerResponseDTO getCustomerById(Long id) {
 
-        return customerRepository.findById(id)
+        Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        return mapToResponseDTO(customer);
     }
 
-    public Customer updateCustomer(Long id, Customer updatedCustomer) {
+    public CustomerResponseDTO updateCustomer(Long id, CustomerRequestDTO requestDTO) {
 
-        Customer existingCustomer = getCustomerById(id);
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
 
-        existingCustomer.setFirstName(updatedCustomer.getFirstName());
-        existingCustomer.setLastName(updatedCustomer.getLastName());
-        existingCustomer.setEmail(updatedCustomer.getEmail());
-        existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
-        existingCustomer.setAddress(updatedCustomer.getAddress());
-        existingCustomer.setCity(updatedCustomer.getCity());
-        existingCustomer.setState(updatedCustomer.getState());
-        existingCustomer.setCountry(updatedCustomer.getCountry());
-        existingCustomer.setZipCode(updatedCustomer.getZipCode());
+        customer.setFirstName(requestDTO.getFirstName());
+        customer.setLastName(requestDTO.getLastName());
+        customer.setEmail(requestDTO.getEmail());
+        customer.setPhoneNumber(requestDTO.getPhoneNumber());
+        customer.setAddress(requestDTO.getAddress());
+        customer.setCity(requestDTO.getCity());
+        customer.setState(requestDTO.getState());
+        customer.setCountry(requestDTO.getCountry());
+        customer.setZipCode(requestDTO.getZipCode());
 
-        return customerRepository.save(existingCustomer);
+        Customer updatedCustomer = customerRepository.save(customer);
+
+        return mapToResponseDTO(updatedCustomer);
     }
 
     public void deleteCustomer(Long id) {
 
-        Customer customer = getCustomerById(id);
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
 
         customerRepository.delete(customer);
+    }
+
+    private CustomerResponseDTO mapToResponseDTO(Customer customer) {
+
+        CustomerResponseDTO responseDTO = new CustomerResponseDTO();
+
+        responseDTO.setId(customer.getId());
+        responseDTO.setFirstName(customer.getFirstName());
+        responseDTO.setLastName(customer.getLastName());
+        responseDTO.setEmail(customer.getEmail());
+        responseDTO.setPhoneNumber(customer.getPhoneNumber());
+        responseDTO.setCity(customer.getCity());
+        responseDTO.setState(customer.getState());
+        responseDTO.setCountry(customer.getCountry());
+
+        return responseDTO;
     }
 }
