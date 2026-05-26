@@ -10,6 +10,7 @@ import CustomerDashboard from "./pages/customer/CustomerDashboard";
 
 
 import CustomerOnboarding from "./pages/customer/CustomerOnboarding";
+import ClaimSubmission from "./pages/claims/ClaimSubmission";
 
 
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -54,6 +55,8 @@ function App() {
           }
         />
 
+
+
         <Route
   path="/policies"
   element={<PolicyManagement />}
@@ -67,6 +70,11 @@ function App() {
 <Route
   path="/customers"
   element={<CustomerOnboarding />}
+/>
+
+<Route
+  path="/claims"
+  element={<ClaimSubmission />}
 />
 
       </Routes>
