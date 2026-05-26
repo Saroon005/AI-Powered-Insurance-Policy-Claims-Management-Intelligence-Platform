@@ -2,6 +2,8 @@ import { useState } from "react";
 import { loginUser } from "../../services/authService";
 import { Link } from "react-router-dom";
 
+import "../../styles/auth.css";
+
 function LoginPage() {
   const [formData, setFormData] = useState({
     email: "",
@@ -35,7 +37,8 @@ function LoginPage() {
   };
 
   return (
-    <div>
+  <div className="auth-container">
+    <div className="auth-card">
       <h2>InsuranceIQ Login</h2>
 
       <form onSubmit={handleSubmit}>
@@ -46,8 +49,6 @@ function LoginPage() {
           onChange={handleChange}
         />
 
-        <br /><br />
-
         <input
           type="password"
           name="password"
@@ -55,21 +56,18 @@ function LoginPage() {
           onChange={handleChange}
         />
 
-        <br /><br />
-
         <button type="submit">
           Login
         </button>
-
-        <p>
-  Don't have an account?
-  <Link to="/register">
-    Register
-  </Link>
-</p>
       </form>
+
+      <p>
+        Don't have an account?
+        <Link to="/register">Register</Link>
+      </p>
     </div>
-  );
+  </div>
+);
 }
 
 export default LoginPage;

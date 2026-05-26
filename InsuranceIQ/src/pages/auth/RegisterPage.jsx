@@ -2,6 +2,7 @@ import { useState } from "react";
 import { registerUser } from "../../services/authService";
 
 import { Link } from "react-router-dom";
+import "../../styles/auth.css";
 
 function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -34,18 +35,17 @@ function RegisterPage() {
   };
 
   return (
-    <div>
+  <div className="auth-container">
+    <div className="auth-card">
       <h2>Create Account</h2>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder="Full Name"
           onChange={handleChange}
         />
-
-        <br /><br />
 
         <input
           type="email"
@@ -54,16 +54,12 @@ function RegisterPage() {
           onChange={handleChange}
         />
 
-        <br /><br />
-
         <input
           type="password"
           name="password"
           placeholder="Password"
           onChange={handleChange}
         />
-
-        <br /><br />
 
         <select
           name="role"
@@ -74,21 +70,18 @@ function RegisterPage() {
           <option value="ADMIN">Admin</option>
         </select>
 
-        <br /><br />
-
         <button type="submit">
           Register
         </button>
-
-        <p>
-  Already have an account?
-  <Link to="/login">
-    Login
-  </Link>
-</p>
       </form>
+
+      <p>
+        Already have an account?
+        <Link to="/login">Login</Link>
+      </p>
     </div>
-  );
+  </div>
+);
 }
 
 export default RegisterPage;
