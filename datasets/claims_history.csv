@@ -1,0 +1,4 @@
+policy_id,customer_id,claim_type,incident_date,claim_amount,status,premium_amount,policy_start_date,kyc_status
+1,1,Motor Accident,2025-05-01,18000,PENDING,25000,2025-01-01,VERIFIED
+1,1,Motor Accident,2025-05-05,45000,PENDING,25000,2025-01-01,PENDING
+1,1,Health Claim,2025-05-08,10000,APPROVED,25000,2025-01-01,VERIFIED
