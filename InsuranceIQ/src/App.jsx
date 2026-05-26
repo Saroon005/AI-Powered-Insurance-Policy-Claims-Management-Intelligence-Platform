@@ -2,10 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
+import PolicyManagement from "./pages/policy/PolicyManagement";
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AgentDashboard from "./pages/agent/AgentDashboard";
 import CustomerDashboard from "./pages/customer/CustomerDashboard";
+
+
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -48,6 +51,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+  path="/policies"
+  element={<PolicyManagement />}
+/>
+
+<Route
+  path="/policies"
+  element={<PolicyManagement />}
+/>
 
       </Routes>
     </BrowserRouter>

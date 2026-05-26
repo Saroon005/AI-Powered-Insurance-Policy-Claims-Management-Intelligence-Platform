@@ -1,0 +1,47 @@
+.policy-page {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 20px;
+  padding: 30px;
+}
+
+.policy-form-card,
+.policy-table-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.policy-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.policy-form-card input,
+.policy-form-card select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.policy-form-card button {
+  padding: 12px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.policy-table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.policy-table-card th,
+.policy-table-card td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
