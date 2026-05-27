@@ -1,0 +1,137 @@
+.analytics-page {
+  min-height: 100vh;
+  background: #040816;
+  color: #f5f5f5;
+  padding: 40px;
+}
+
+.analytics-page h1 {
+  font-size: 52px;
+  margin-bottom: 30px;
+  color: #f5f0dd;
+}
+
+.analytics-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.analytics-card {
+  background: #11172f;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid #283154;
+}
+
+.analytics-card h2 {
+  font-size: 48px;
+  margin-bottom: 12px;
+  color: #f5f0dd;
+}
+
+.analytics-card p {
+  color: #93a0c7;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.panel {
+  background: #11172f;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #283154;
+}
+
+.panel h2 {
+  margin-bottom: 20px;
+  color: #f5f0dd;
+}
+
+.loss-value {
+  font-size: 48px;
+  font-weight: bold;
+  color: #00d4b4;
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #1e2647;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #00d4b4,
+    #3b82f6
+  );
+}
+
+.agent-row,
+.fraud-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a2142;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.agent-row strong {
+  color: white;
+}
+
+.agent-row p {
+  color: #93a0c7;
+  margin-top: 4px;
+}
+
+.risk-badge {
+  background: #ff2d7a;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+canvas {
+  max-height: 350px !important;
+}
+
+@media (max-width: 1200px) {
+  .analytics-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-page {
+    padding: 20px;
+  }
+
+  .analytics-page h1 {
+    font-size: 36px;
+  }
+}

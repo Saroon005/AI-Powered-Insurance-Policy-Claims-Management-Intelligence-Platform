@@ -1,0 +1,140 @@
+.claims-page {
+  min-height: 100vh;
+  background: #060b1f;
+  color: #ffffff;
+  padding: 30px;
+}
+
+.claims-page h1 {
+  font-size: 42px;
+  margin-bottom: 30px;
+  color: #f5f0dc;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: #101735;
+  border: 1px solid #283154;
+  border-radius: 14px;
+  padding: 25px;
+}
+
+.stat-card h2 {
+  font-size: 42px;
+  margin-bottom: 8px;
+  color: #f5f0dc;
+}
+
+.stat-card p {
+  color: #9ea6d3;
+}
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.toolbar select,
+.toolbar input {
+  background: #101735;
+  color: white;
+  border: 1px solid #283154;
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-width: 220px;
+}
+
+.table-card {
+  background: #101735;
+  border: 1px solid #283154;
+  border-radius: 14px;
+  padding: 25px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  color: #7f88b8;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+th,
+td {
+  padding: 16px;
+  border-bottom: 1px solid #283154;
+}
+
+td {
+  color: #ffffff;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.approve,
+.reject,
+.escalate,
+.fraud {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.approve {
+  background: #00d4b4;
+  color: white;
+}
+
+.reject {
+  background: #ff4d6d;
+  color: white;
+}
+
+.escalate {
+  background: #f4c430;
+  color: black;
+}
+
+.fraud {
+  background: #23315e;
+  color: white;
+}
+
+.approve:hover,
+.reject:hover,
+.escalate:hover,
+.fraud:hover {
+  opacity: 0.9;
+}
+
+.risk-high {
+  color: #ff4d6d;
+  font-weight: bold;
+}
+
+.risk-medium {
+  color: #f4c430;
+  font-weight: bold;
+}
+
+.risk-low {
+  color: #00d4b4;
+  font-weight: bold;
+}

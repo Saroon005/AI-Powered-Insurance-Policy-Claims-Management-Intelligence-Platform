@@ -1,0 +1,98 @@
+
+
+.fraud-page {
+  padding: 30px;
+  min-height: 100vh;
+  background: #060b1f;
+  color: white;
+}
+
+.fraud-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.fraud-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: #101735;
+  border: 1px solid #283154;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.card h2 {
+  margin-bottom: 20px;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.risk-high {
+  color: #ff4d6d;
+  font-weight: bold;
+}
+
+.risk-medium {
+  color: #f4c430;
+  font-weight: bold;
+}
+
+.risk-low {
+  color: #00d4b4;
+  font-weight: bold;
+}
+
+.recommendation-card p {
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.escalate-btn,
+.docs-btn,
+.safe-btn,
+.back-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.escalate-btn {
+  background: #ff4d6d;
+  color: white;
+}
+
+.docs-btn {
+  background: #f4c430;
+  color: black;
+}
+
+.safe-btn {
+  background: #00d4b4;
+  color: white;
+}
+
+.back-btn {
+  background: #23315e;
+  color: white;
+}
+
+.loading {
+  color: white;
+  padding: 40px;
+}

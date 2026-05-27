@@ -12,8 +12,12 @@ import CustomerDashboard from "./pages/customer/CustomerDashboard";
 import CustomerOnboarding from "./pages/customer/CustomerOnboarding";
 import ClaimSubmission from "./pages/claims/ClaimSubmission";
 
+import ClaimsAssessment from "./pages/claims/ClaimsAssessment";
+import FraudDetection from "./pages/fraud/FraudDetection";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
+import AnalyticsDashboard from "./pages/analytics/AnalyticsDashboard";
+
 
 function App() {
   return (
@@ -77,6 +81,25 @@ function App() {
   element={<ClaimSubmission />}
 />
 
+<Route
+  path="/claims-assessment"
+  element={<ClaimsAssessment />}
+/>
+
+<Route
+  path="/fraud/:claimId"
+  element={<FraudDetection />}
+/>
+
+<Route
+  path="/analytics"
+  element={<AnalyticsDashboard />}
+/>
+
+<Route
+  path="/analytics"
+  element={<AnalyticsDashboard />}
+/>
       </Routes>
     </BrowserRouter>
   );
