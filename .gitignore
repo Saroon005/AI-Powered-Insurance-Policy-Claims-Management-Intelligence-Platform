@@ -1,3 +1,6 @@
+.env
+__pycache__/
+*.pyc
 ### Maven ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
