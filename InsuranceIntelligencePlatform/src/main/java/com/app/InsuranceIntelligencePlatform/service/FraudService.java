@@ -15,12 +15,16 @@ public class FraudService {
     private final ClaimRepository claimRepository;
     private final RestTemplate restTemplate;
 
+    private final NotificationService notificationService;
+
     public FraudService(ClaimRepository claimRepository,
-                        RestTemplate restTemplate) {
+                        RestTemplate restTemplate,
+                        NotificationService notificationService) {
         this.claimRepository = claimRepository;
         this.restTemplate = restTemplate;
+        this.notificationService = notificationService;
     }
-
+    
     public FraudResponseDTO checkFraud(Long claimId) {
 
         Claim claim = claimRepository.findById(claimId)
@@ -48,8 +52,14 @@ public class FraudService {
         if (responseDTO != null) {
             claim.setFraudScore(responseDTO.getFraudScore());
             claimRepository.save(claim);
-        }
 
+            notificationService.sendFraudScoreNotification(
+                    claim.getId(),
+                    responseDTO.getFraudScore(),
+                    responseDTO.getRiskLevel(),
+                    "Fraud score generated for claim CLM" + claim.getId()
+            );
+        }
         return responseDTO;
     }
 }

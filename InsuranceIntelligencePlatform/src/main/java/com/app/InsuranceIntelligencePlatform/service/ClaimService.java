@@ -19,10 +19,14 @@ public class ClaimService {
     private final ClaimRepository claimRepository;
     private final PolicyRepository policyRepository;
 
+    private final NotificationService notificationService;
+
     public ClaimService(ClaimRepository claimRepository,
-                        PolicyRepository policyRepository) {
+                        PolicyRepository policyRepository,
+                        NotificationService notificationService) {
         this.claimRepository = claimRepository;
         this.policyRepository = policyRepository;
+        this.notificationService = notificationService;
     }
 
     public ClaimResponseDTO createClaim(ClaimRequestDTO requestDTO) {
@@ -44,6 +48,11 @@ public class ClaimService {
         claim.setFraudScore(0);
 
         Claim savedClaim = claimRepository.save(claim);
+
+        notificationService.sendClaimFiledNotification(
+                savedClaim.getId(),
+                "New " + savedClaim.getClaimType() + " insurance claim submitted"
+        );
 
         return mapToResponseDTO(savedClaim);
     }
@@ -101,6 +110,13 @@ public class ClaimService {
         claim.setStatus(status);
 
         Claim updatedClaim = claimRepository.save(claim);
+
+        notificationService.sendClaimStatusUpdatedNotification(
+                updatedClaim.getId(),
+                updatedClaim.getStatus().name(),
+                "Your claim status has been updated to " + updatedClaim.getStatus().name(),
+                "customer_" + updatedClaim.getCustomer().getId()
+        );
 
         return mapToResponseDTO(updatedClaim);
     }
