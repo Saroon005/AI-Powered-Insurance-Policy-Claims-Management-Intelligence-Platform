@@ -1,9 +1,4 @@
 # InsuranceIQ — ReactJS Frontend
-
-
-
----
-
 ## Overview
 
 This is the complete ReactJS frontend for the InsuranceIQ platform. It connects to all 3 backend services:
@@ -102,7 +97,7 @@ ReactJS-Frontend/
 
 ---
 
-## Backend Changes Made for Frontend Integration
+## Changes Made for Frontend Integration
 
 ### 1. SecurityConfig.java (Spring Boot)
 Added CORS configuration to allow React frontend requests:
@@ -132,22 +127,12 @@ DATABASE_URL = f"mysql+pymysql://{settings.MYSQL_USER}:{password}@{settings.MYSQ
 
 ---
 
-## Setup Instructions for Teammates
+## Setup Instructions 
 
-### Prerequisites
 
-Make sure you have these installed:
-
-| Tool | Version | Download |
-|------|---------|----------|
-| Node.js | 18+ | https://nodejs.org |
-| Git | Latest | https://git-scm.com |
-
----
 
 ### Step 1 — Make sure all backends are running
 
-Before starting frontend, confirm these are running:
 
 ```
 Spring Boot  → http://localhost:8081
@@ -160,76 +145,23 @@ MySQL        → localhost:3306
 
 ### Step 2 — Clone the repository
 
-```bash
-# Enable long paths first (Windows)
-git config --system core.longpaths true
-
-# Clone to short path
-cd C:\
-mkdir projects
-cd C:\projects
-git clone -b dev https://github.com/Saroon005/AI-Powered-Insurance-Policy-Claims-Management-Intelligence-Platform.git
-```
-
----
-
 ### Step 3 — Go to frontend folder
-
-```bash
-cd "C:\projects\AI-Powered-Insurance-Policy-Claims-Management-Intelligence-Platform\ReactJS-Frontend"
-```
-
----
 
 ### Step 4 — Install dependencies
 
-```bash
 npm install
-```
-
----
 
 ### Step 5 — Start the frontend
 
-```bash
 npm run dev
-```
-
----
 
 ### Step 6 — Open browser
 
-```
 http://localhost:3000
-```
-
----
 
 ### Step 7 — Register your first user
 
-Click **Register** tab and create:
 
-```
-Name: Admin User
-Email: admin@insuranceiq.in
-Password: Admin@123
-Role: ADMIN
-```
-
----
-
-## Test All Roles
-
-Register these users to test all role dashboards:
-
-| Role | Email | Password |
-|------|-------|---------|
-| ADMIN | admin@insuranceiq.in | Admin@123 |
-| AGENT | agent@insuranceiq.in | Agent@123 |
-| CUSTOMER | customer@insuranceiq.in | Customer@123 |
-| CLAIMS_MANAGER | claims@insuranceiq.in | Claims@123 |
-
----
 
 ## Test Flow (End to End)
 
@@ -268,7 +200,6 @@ Content-Type: application/json
 ---
 
 ## Load Analytics Data (Required for charts)
-
 Run these in Postman after Python service starts:
 ```
 POST http://localhost:8000/bulk-import/agents
@@ -277,20 +208,7 @@ POST http://localhost:8000/bulk-import/policies
 POST http://localhost:8000/bulk-import/claims
 ```
 
----
 
-## Common Issues & Fixes
-
-| Issue | Fix |
-|-------|-----|
-| CORS error | Make sure SecurityConfig.java is updated |
-| Python DB error | Make sure database.py uses quote_plus |
-| Socket not connecting | Make sure Node.js is running on port 5001 |
-| Login fails | Make sure Spring Boot is running on port 8081 |
-| Charts empty | Run bulk import endpoints on Python |
-| npm install fails | Enable long paths: `git config --system core.longpaths true` |
-
----
 
 ## API Connections
 
@@ -304,10 +222,10 @@ Python FastAPI (localhost:8000)  →  MySQL (insurance_ai)
 Node.js (localhost:5001)  →  Socket.IO → React (real-time)
 ```
 
----
+
 
 ## Developed By
 
-**Dilpreet** — ReactJS Frontend Module  
+**Sushma** — ReactJS Frontend Module  
 AI-Powered Insurance Policy & Claims Management Intelligence Platform  
-Capstone Project — Full Stack + AI + Cloud
+
