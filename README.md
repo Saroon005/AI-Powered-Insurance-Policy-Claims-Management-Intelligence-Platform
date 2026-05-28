@@ -1,7 +1,6 @@
 # InsuranceIQ — ReactJS Frontend
 ## Overview
-
-This is the complete ReactJS frontend for the InsuranceIQ platform. It connects to all 3 backend services:
+ReactJS frontend for the InsuranceIQ platform. It connects to all 3 backend services:
 
 | Backend | Port | Purpose |
 |---------|------|---------|
