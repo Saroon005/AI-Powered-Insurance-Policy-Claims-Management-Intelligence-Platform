@@ -1,16 +1,9 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
+from urllib.parse import quote_plus
 
-from app.core.config import settings
-
-DATABASE_URL = (
-    f"mysql+pymysql://{settings.MYSQL_USER}:"
-    f"{settings.MYSQL_PASSWORD}@"
-    f"{settings.MYSQL_HOST}:"
-    f"{settings.MYSQL_PORT}/"
-    f"{settings.MYSQL_DB}"
-)
+password = quote_plus("Challenge@897")
+DATABASE_URL = f"mysql+pymysql://root:{password}@localhost:3306/insurance_ai"
 
 engine = create_engine(DATABASE_URL)
 
@@ -22,13 +15,9 @@ SessionLocal = sessionmaker(
 
 Base = declarative_base()
 
-
 def get_db():
     db = SessionLocal()
-
     try:
         yield db
     finally:
         db.close()
-
-        
