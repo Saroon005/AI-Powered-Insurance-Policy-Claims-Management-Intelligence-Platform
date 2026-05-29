@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const SPRING_BASE = 'http://localhost:8081/api';
-const PYTHON_BASE = 'http://localhost:8000';
+const SPRING_BASE = import.meta.env.VITE_SPRING_BASE || 'http://localhost:8081/api';
+const PYTHON_BASE = import.meta.env.VITE_PYTHON_BASE || 'http://localhost:8000';
 
 export const springApi = axios.create({ baseURL: SPRING_BASE });
 export const pythonApi = axios.create({ baseURL: PYTHON_BASE });

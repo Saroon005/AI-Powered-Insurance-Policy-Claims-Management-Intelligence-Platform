@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: insurance_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-Challenge@897}
+      MYSQL_DATABASE: insurance_iq
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  spring-backend:
+    build: 
+      context: ./InsuranceIntelligencePlatform
+    container_name: spring_backend
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_USERNAME=root
+      - DB_PASSWORD=${DB_PASSWORD:-Challenge@897}
+      - JWT_SECRET=${JWT_SECRET:-your_super_secret_jwt_key_that_is_long_enough}
+      - JWT_EXPIRATION=86400000
+    depends_on:
+      - mysql
+
+  python-backend:
+    build:
+      context: ./PythonBackend
+    container_name: python_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=${DB_PASSWORD:-Challenge@897}
+      - MYSQL_DB=insurance_iq
+      - CORS_ORIGIN=http://${EC2_PUBLIC_IP:-localhost}:3000
+    depends_on:
+      - mysql
+
+  node-socket:
+    build:
+      context: ./node-notification-service
+    container_name: node_socket
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      - CORS_ORIGIN=http://${EC2_PUBLIC_IP:-localhost}:3000
+
+  react-frontend:
+    build:
+      context: ./ReactJS-Frontend
+      args:
+        VITE_SPRING_BASE: http://${EC2_PUBLIC_IP:-localhost}:8081/api
+        VITE_PYTHON_BASE: http://${EC2_PUBLIC_IP:-localhost}:8000
+        VITE_SOCKET_BASE: http://${EC2_PUBLIC_IP:-localhost}:5001
+    container_name: react_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - spring-backend
+      - python-backend
+      - node-socket
+
+volumes:
+  mysql_data:
