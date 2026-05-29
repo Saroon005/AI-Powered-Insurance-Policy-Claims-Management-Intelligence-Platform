@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/claims")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ClaimController {
 
     private final ClaimService claimService;
