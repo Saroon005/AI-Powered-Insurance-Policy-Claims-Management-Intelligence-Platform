@@ -20,7 +20,7 @@ ENV VITE_PYTHON_BASE=$VITE_PYTHON_BASE
 ENV VITE_SOCKET_BASE=$VITE_SOCKET_BASE
 
 # Build the app (Vite outputs to /dist by default)
-RUN npx vite build
+RUN node node_modules/vite/bin/vite.js build
 
 # Stage 2: Serve the app using Nginx
 FROM nginx:alpine
