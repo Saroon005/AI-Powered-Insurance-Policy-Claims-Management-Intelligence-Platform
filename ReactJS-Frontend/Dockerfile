@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy package.json and install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install && chmod -R +x node_modules/.bin
 
 # Copy the rest of the application code
 COPY . .
@@ -20,7 +20,7 @@ ENV VITE_PYTHON_BASE=$VITE_PYTHON_BASE
 ENV VITE_SOCKET_BASE=$VITE_SOCKET_BASE
 
 # Build the app (Vite outputs to /dist by default)
-RUN npm run build
+RUN npx vite build
 
 # Stage 2: Serve the app using Nginx
 FROM nginx:alpine
